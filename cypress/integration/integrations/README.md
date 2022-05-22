@@ -1,0 +1,1 @@
+Los tests realizados a las funcionalidades integración y webhook hacen parte de la estrategia aleatorio.
