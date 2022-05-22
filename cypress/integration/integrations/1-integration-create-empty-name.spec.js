@@ -1,5 +1,5 @@
-import Integration from '../../page-objects/integration';
-import Login from '../../page-objects/login';
+import Integration from '../../../page-objects/integration';
+import Login from '../../../page-objects/login';
 
 const login       = new Login();
 const integration = new Integration();

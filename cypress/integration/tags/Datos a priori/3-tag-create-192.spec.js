@@ -1,5 +1,5 @@
-import Login from '../../page-objects/login';
-import Tag from '../../page-objects/tag';
+import Login from '../../../page-objects/login';
+import Tag from '../../../page-objects/tag';
 
 const login = new Login();
 const tag = new Tag();
@@ -9,7 +9,7 @@ describe('Should login and not create a post with title succesfully', () => {
     before(() => {
         cy.fixture('tags.json').then((data) => {
             let tag = data[Math.floor(Math.random() * data.length)];
-            tagName = tag.tag_naughty;
+            tagName = tag.tag_192;
         });
 
         login.go();

@@ -1,16 +1,16 @@
-import Login from '../../page-objects/login';
-import Tag from '../../page-objects/tag';
+import Login from '../../../page-objects/login';
+import Tag from '../../../page-objects/tag';
 
 const login = new Login();
-const tag = new Tag();
-let tagName, tagDesc;
+const tag   = new Tag();
+let tagName, color;
 
-describe('Should login and create a tag with title and description succesfully', () => {
+describe('Should login and create a tag with color succesfully', () => {
     before(() => {
         cy.fixture('tags.json').then((data) => {
-            let tag = data[Math.floor(Math.random() * data.length)];
-            tagName = tag.tag_190;
-            tagDesc = tag.desc_500;
+            let tag     = data[Math.floor(Math.random() * data.length)];
+                tagName = tag.tag_190;
+                color   = tag.color.split('#')[1];
         });
 
         login.go();
@@ -25,7 +25,7 @@ describe('Should login and create a tag with title and description succesfully',
             .wait(2000)
             .clickNewTag()
             .setName(tagName)
-            .setDesc(tagDesc)
+            .setColor(color)
             .save()
             .wait(1000);
     });

@@ -1,5 +1,5 @@
-import Login from '../../page-objects/login';
-import Tag from '../../page-objects/tag';
+import Login from '../../../page-objects/login';
+import Tag from '../../../page-objects/tag';
 
 const login = new Login();
 const tag = new Tag();

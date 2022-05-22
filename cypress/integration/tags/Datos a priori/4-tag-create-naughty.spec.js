@@ -1,16 +1,15 @@
-import Login from '../../page-objects/login';
-import Tag from '../../page-objects/tag';
+import Login from '../../../page-objects/login';
+import Tag from '../../../page-objects/tag';
 
 const login = new Login();
-const tag   = new Tag();
-let tagName, tagDesc;
+const tag = new Tag();
+let tagName;
 
-describe('Should login and not create a tag with title and description succesfully', () => {
+describe('Should login and not create a post with title succesfully', () => {
     before(() => {
         cy.fixture('tags.json').then((data) => {
             let tag = data[Math.floor(Math.random() * data.length)];
-            tagName = tag.tag_192;
-            tagDesc = tag.desc_500;
+            tagName = tag.tag_naughty;
         });
 
         login.go();
@@ -21,13 +20,7 @@ describe('Should login and not create a tag with title and description succesful
     });
 
     it('should create tag', () => {
-        tag.visit()
-            .wait(2000)
-            .clickNewTag()
-            .setName(tagName)
-            .setDesc(tagDesc)
-            .save()
-            .wait(1000);
+        tag.visit().wait(2000).clickNewTag().setName(tagName).save().wait(1000);
     });
 
     it('tag should not be available on list', () => {

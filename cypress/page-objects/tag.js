@@ -5,7 +5,7 @@ export default class Tag {
     }
 
     clickNewTag() {
-        cy.get('[href*="#/tags/new/"]').click();
+        cy.get('.view-actions [href*="#/tags/new/"]').click();
         return this;
     }
 
@@ -29,8 +29,38 @@ export default class Tag {
         return this;
     }
 
+    setMetaTitle(title) {
+        cy.get('[name=metaTitle]').type(title);
+        return this;
+    }
+
+    setMetaDescription(desc) {
+        cy.get('[name=metaDescription]').type(desc);
+        return this;
+    }
+
+    setCanonicalUrl(url) {
+        cy.get('[name=canonicalUrl]').type(url);
+        return this;
+    }
+
+    setValue(path, value) {
+        cy.get(path).type(value);
+        return this;
+    }
+
+    validateValue(path, value) {
+        cy.get(path).should('have.value', value);
+        return this;
+    }
+
     wait(time) {
         cy.wait(time);
+        return this;
+    }
+
+    toggleSection(index) {
+        cy.get(`.gh-expandable-block:nth-child(${index}) button`).click();
         return this;
     }
 
