@@ -7,7 +7,7 @@ const page=new Page()
 describe("Crear pagina con link iguales", function () {
     let  pageDatos=[]
     before(function(){
-        cy.request("https://api.mockaroo.com/api/e2e6c590?count=1000&key=0190dc40").then((response)=>pageDatos=response.body)
+        cy.request("https://api.mockaroo.com/api/c98be0f0?count=1000&key=a8a44f40").then((response)=>pageDatos=response.body)
     })
     it("Members", function () {
       
