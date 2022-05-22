@@ -1,5 +1,7 @@
 
 
+
+
 export class Page{
 
     navigateToNewPage() {
@@ -27,6 +29,7 @@ export class Page{
         if(date===""){
           cy.xpath("/html/body/div[1]/div/footer/button[2]/span").click()
         }else{
+          cy.xpath("/html/body/div[1]/div/div/section/div/div[2]/div[2]/div[2]/div[1]/div/div[1]/div/input").clear()
           cy.xpath("/html/body/div[1]/div/div/section/div/div[2]/div[2]/div[2]/div[1]/div/div[1]/div/input").type(date)
           cy.xpath("/html/body/div[1]/div/footer/button[2]/span").click()
         }
@@ -37,31 +40,37 @@ export class Page{
         cy.xpath("/html/body/div[2]/div/main/div/div/div/div/div[2]/form/div[3]/div/div[1]/ul/input").type(label)
         cy.xpath("/html/body/div[2]/div/main/div/div/div/div/div[2]/form/div[3]/div/div[2]/div/ul/li[1]").click()
       }
-      setUrl(url){
+      setUrl(url,char=false){
         this.openSettings()
         cy.wait(1000)
         let ulrInput=cy.xpath("/html/body/div[2]/div/main/div/div/div/div/div[2]/form/div[1]/div/input");
         ulrInput.clear()
         cy.wait(1000)
-        cy.xpath("/html/body/div[2]/div/main/div/div/div/div/div[2]/form/div[1]/div/input").type(url)
-        this.openSettings()
-      }
-
-      createMetaData(title){
-        this.openSettings()
-        cy.wait(1000)
-        cy.xpath("/html/body/div[2]/div/main/div/div/div/div/div[2]/form/ul/li[1]/button").click()
-        cy.wait(500)
-        cy.xpath("/html/body/div[2]/div/main/div/div/div/div[2]/div/div[2]/form/div[1]/input").type(title)
-        cy.xpath("/html/body/div[2]/div/main/div/div/div/div[2]/div/div[2]/form/div[2]/textarea").type(title)
       
+        cy.xpath("/html/body/div[2]/div/main/div/div/div/div/div[2]/form/div[1]/div/input").type(url)
         
-      }
+        }
+      
+
+        createInjection(r,g,b){
+          let injection= `<style>.article-title {
+            color:rgb(${r},${g},${b}) ;
+        }</style>` 
+          this.openSettings()
+          cy.xpath("/html/body/div[2]/div/main/div/div/div/div/div[2]/form/ul/li[4]/button").click({force:true})
+          cy.xpath("/html/body/div[2]/div/main/div/div/div/div[2]/div/div[2]/form/div[1]/div/div/div[6]").type(injection)
+          this.openSettings()
+        }
+      
       openSettings(){
         cy.xpath("/html/body/div[2]/div/main/button").click()
       }
+      checkErrorMessageLength(){
+        cy.xpath("/html/body/div[2]/aside/article").should("be.visible")
+      }
       savePage(){
           cy.xpath("/html/body/div[2]/div/main/div/section/header/section/div[2]/div[1]/span").click()
+          cy.wait(1000)
           cy.xpath("/html/body/div[1]/div/footer/button[2]/span").click()
       }
 
@@ -75,13 +84,27 @@ export class Page{
       checkErrorMessage(){
         cy.xpath("/html/body/div[1]/div/div/section/div/div[2]/div[2]/div[3]").should("be.visible")
       }
-
-      checkTitle(title){
+      checkTitleWidth(){
+        cy.visit("http://localhost:2368/ghost/#/pages");
+        cy.wait(2000)
+        cy.xpath("/html[1]/body[1]")
+        .invoke("width")
+        .then((width) => {
+          cy.xpath(
+            "/html[1]/body[1]/div[2]/div[1]/main[1]/section[1]/section[1]/ol[1]/li[2]"
+          )
+            .invoke("width")
+            .then((widthTitle) => {
+             expect(width*0.7<widthTitle).equal(true)
+            });
+        });
+      }
+      checkTitle(title,type="3"){
         cy.visit("http://localhost:2368/ghost/#/pages");
         cy.wait(2000)
         cy.xpath("/html/body/div[2]/div/main/section/div/header/section/div/div[1]/div[1]/span").click()
         cy.wait(1000)
-        cy.xpath("/html/body/div[1]/div/ul/li[3]").click()
+        cy.xpath("/html/body/div[1]/div/ul/li["+type+"]").click()
         cy.wait(1000)
           cy.xpath("/html/body/div[2]/div/main/section/section/ol/li[2]/a[1]/h3") .invoke("text")
           .then((text) => expect(text.includes(title)).equal(true));
@@ -89,17 +112,33 @@ export class Page{
       checkUrl(url){
         cy.xpath("/html/body/div[2]/div/main/div/div/div/div/div[2]/form/div[1]/p").invoke("text").then((text) => {
 
-           expect(text).not.equal(url)
+           cy.visit(text,{failOnStatusCode:false})
+           cy.xpath("/html/body/div[1]/div/section/div/section/h1").invoke("text").then((text)=>expect(text.includes("404")).equal(true))
         });
       }
-      checkPage(title){
+      checkUrlLength(url){
+        cy.xpath("/html/body/div[2]/div/main/div/section/header/section/div/div[1]/span").click();
+        cy.wait(1000)
+        cy.xpath("/html/body/div[1]/div/footer/button[2]/span").click()
+        cy.wait(1000)
+        
+        cy.xpath("/html/body/div[2]/div/main/div/div/div/div/div[2]/form/div[1]/a").invoke('attr', 'href').then((text) => {
+          expect(text.length<url.length).equal(true)
+          
+        });
+      }
+      checkPage(title,color=""){
         this.openSettings()
         cy.xpath("/html/body/div[2]/div/main/div/div/div/div/div[2]/form/div[1]/p").invoke("text").then((text) => {
 
           cy.visit(text)
           cy.wait(1000)
           cy.xpath("/html/body/div[1]/div/main/article/section/h1").invoke("text").then((text) => expect(text.includes(title)).equal(true));
+          
         });
-      
+        
+        if(color!=""){
+          cy.xpath("/html/body/div[1]/div/main/article/section/h1").should('have.css', 'color', color)
+        }
       }
 }

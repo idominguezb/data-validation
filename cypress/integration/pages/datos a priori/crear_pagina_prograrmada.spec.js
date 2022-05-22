@@ -14,11 +14,11 @@ describe("crear pagina con tag", function () {
      page.navigateToNewPage()
      page.setTitle(pageDatos[index]["title"])
     page.setDescription(pageDatos[index]["description"])
-    page.createMetaData(pageDatos[index]["title"])
+    page.schedule()
       cy.wait(2000)
-      page.savePage()
-      cy.wait(2000)
-      page.checkTitle(pageDatos[index]["title"].toString())
+   
+     
+      page.checkTitle(pageDatos[index]["title"].toString(),4)
     });
   });
 

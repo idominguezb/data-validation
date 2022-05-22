@@ -24,6 +24,9 @@ export class Member {
       "/html/body/div[2]/div/main/section/div[2]/form/div/section/div/div[1]/div/div[1]/div[2]/p"
     ).should("be.visible");
   }
+  checkNoteMessageError(){
+    cy.xpath("/html/body/div[2]/div/main/section/div[2]/form/div/section/div/div[1]/div/div[3]/p[1]").should("be.visible")
+  }
   checkRetryMessge() {
     cy.xpath(
       "/html/body/div[2]/div/main/section/div[1]/header/section/button/span"
