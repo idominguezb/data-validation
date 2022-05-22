@@ -1,6 +1,5 @@
-import Integration from '../../page-objects/integration';
-import Login from '../../page-objects/login';
-
+import Integration from '../../../page-objects/integration';
+import Login from '../../../page-objects/login';
 
 const { faker } = require('@faker-js/faker');
 const login = new Login();
@@ -10,7 +9,7 @@ let name;
 
 describe('Should login and create a integration successfully', () => {
     before(() => {
-        name = faker.datatype.string(191);
+        name = faker.datatype.string(190);
         login.go();
     });
 

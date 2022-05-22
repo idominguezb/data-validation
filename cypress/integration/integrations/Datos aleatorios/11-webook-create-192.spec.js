@@ -1,7 +1,7 @@
-import Integration from '../../page-objects/integration';
-import Login from '../../page-objects/login';
+import Integration from '../../../page-objects/integration';
+import Login from '../../../page-objects/login';
 
-import Webhook from '../../page-objects/webhook';
+import Webhook from '../../../page-objects/webhook';
 
 
 const { faker } = require('@faker-js/faker');
@@ -17,9 +17,9 @@ describe('Should login and create a integration successfully', () => {
     });
 
     before(() => {
-        name = faker.datatype.string(190);
-        url  = faker.internet.url();
-        
+        name = faker.datatype.string(192);
+        url = faker.internet.url();
+
         login.go();
     });
 
@@ -28,11 +28,7 @@ describe('Should login and create a integration successfully', () => {
     });
 
     it('should create a webhook', () => {
-        integration
-            .visit()
-            .wait(1000)
-            .clickFirstIntegration()
-            .wait(1000);
+        integration.visit().wait(1000).clickFirstIntegration().wait(1000);
 
         webhook
             .clickAddWebhook()
@@ -43,7 +39,7 @@ describe('Should login and create a integration successfully', () => {
             .wait(1000);
     });
 
-    it('webhook text should exists', () => {
-        cy.contains(name).should('exist').wait(3000);
+    it('webhook text should not exists', () => {
+        webhook.retry();
     });
 });

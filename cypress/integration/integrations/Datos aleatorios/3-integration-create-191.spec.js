@@ -1,5 +1,6 @@
-import Integration from '../../page-objects/integration';
-import Login from '../../page-objects/login';
+import Integration from '../../../page-objects/integration';
+import Login from '../../../page-objects/login';
+
 
 const { faker } = require('@faker-js/faker');
 const login = new Login();
@@ -9,7 +10,7 @@ let name;
 
 describe('Should login and create a integration successfully', () => {
     before(() => {
-        name = faker.datatype.string(192);
+        name = faker.datatype.string(191);
         login.go();
     });
 
@@ -17,7 +18,7 @@ describe('Should login and create a integration successfully', () => {
         Cypress.Cookies.preserveOnce('ghost-admin-api-session');
     });
 
-    it('should not create a integration', () => {
+    it('should create a integration', () => {
         integration
             .visit()
             .wait(1000)
@@ -27,8 +28,8 @@ describe('Should login and create a integration successfully', () => {
             .save();
     });
 
-    it('integration should not be on integration list', () => {
+    it('integration should be on integration list', () => {
         integration.visit();
-        cy.contains(name).should('not.exist').wait(3000);
+        cy.contains(name).should('exist').wait(3000);
     });
 });

@@ -9,10 +9,10 @@ describe('Should login and create a tag with twitter title succesfully', () => {
     before(() => {
         cy.request('https://my.api.mockaroo.com/tag.json?key=81544930').then(
             (json) => {
-                let tags = json.body;
-                let tag = tags[Math.floor(Math.random() * tags.length)];
-                tagName = tag.tag_190;
-                twitterTitle = tag.meta_title;
+                let tags         = json.body;
+                let tag          = tags[Math.floor(Math.random() * tags.length)];
+                    tagName      = tag.tag_190;
+                    twitterTitle = tag.meta_title;
             }
         );
 

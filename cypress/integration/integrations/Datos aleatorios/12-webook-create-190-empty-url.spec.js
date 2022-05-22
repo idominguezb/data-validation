@@ -1,15 +1,14 @@
-import Integration from '../../page-objects/integration';
-import Login from '../../page-objects/login';
+import Integration from '../../../page-objects/integration';
+import Login from '../../../page-objects/login';
 
-import Webhook from '../../page-objects/webhook';
-
+import Webhook from '../../../page-objects/webhook';
 
 const { faker } = require('@faker-js/faker');
 const login = new Login();
 const integration = new Integration();
 const webhook = new Webhook();
 
-let name, url;
+let name;
 
 describe('Should login and create a integration successfully', () => {
     Cypress.on('uncaught:exception', (err, runnable) => {
@@ -18,7 +17,6 @@ describe('Should login and create a integration successfully', () => {
 
     before(() => {
         name = faker.datatype.string(190);
-        url  = faker.internet.url();
 
         login.go();
     });
@@ -33,12 +31,12 @@ describe('Should login and create a integration successfully', () => {
         webhook
             .clickAddWebhook()
             .setName(name)
-            .setTargetUrl(url)
+            .setEvent()
             .save()
             .wait(1000);
     });
 
-    it('Retry text should exist', () => {
+    it('retry text should exists', () => {
         webhook.retry();
     });
 });

@@ -1,14 +1,12 @@
-import Integration from '../../page-objects/integration';
-import Login from '../../page-objects/login';
+import Integration from '../../../page-objects/integration';
+import Login from '../../../page-objects/login';
 
-import Webhook from '../../page-objects/webhook';
+import Webhook from '../../../page-objects/webhook';
 
 const { faker } = require('@faker-js/faker');
 const login = new Login();
 const integration = new Integration();
 const webhook = new Webhook();
-
-let name;
 
 describe('Should login and create a integration successfully', () => {
     Cypress.on('uncaught:exception', (err, runnable) => {
@@ -16,8 +14,6 @@ describe('Should login and create a integration successfully', () => {
     });
 
     before(() => {
-        name = faker.datatype.string(190);
-
         login.go();
     });
 
@@ -25,15 +21,14 @@ describe('Should login and create a integration successfully', () => {
         Cypress.Cookies.preserveOnce('ghost-admin-api-session');
     });
 
-    it('should create a webhook', () => {
-        integration.visit().wait(1000).clickFirstIntegration().wait(1000);
+    it('should not create a webhook', () => {
+        integration
+            .visit()
+            .wait(1000)
+            .clickFirstIntegration()
+            .wait(1000)
 
-        webhook
-            .clickAddWebhook()
-            .setName(name)
-            .setEvent()
-            .save()
-            .wait(1000);
+        webhook.clickAddWebhook().wait(1000).save().wait(1000);
     });
 
     it('retry text should exists', () => {
