@@ -1,15 +1,15 @@
 
-import {Login} from "../../../pages/login";
-import {Page} from "../../../pages/page";
+import Login from "../../../page-objects/login";
+import {Page} from "../../../page-objects/page";
 
 const pageDatos=require("./datos/page_datos.json")
 const login= new Login()
 const page=new Page()
 describe("crear pagina con link diferente", function () {
     it("Members", function () {
-        cy.viewport(1920,1080)  
-      cy.visit("http://localhost:2368/ghost/");
-      login.login()
+    
+      login.go()
+      cy.wait(2000)
       let index=getRandomInt(0,pageDatos.length)
      page.navigateToNewPage()
      page.setTitle(pageDatos[index]["title"])
@@ -24,7 +24,7 @@ describe("crear pagina con link diferente", function () {
 
   
   function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
+      min = Math.ceil(min);
+      max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
-  }
+  }   

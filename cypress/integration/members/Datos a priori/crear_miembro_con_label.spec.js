@@ -1,13 +1,13 @@
-import {Login} from "../../../pages/login";
-import {Member} from "../../../pages/member";
+import Login from "../../../page-objects/login";
+import {Member} from "../../../page-objects/member";
 
 const membersDatos=require("./datos/datos_members.json")
 const login= new Login()
 const member=new Member()
 describe("crear miembro con label", function () {
     it("Members", function () {
-      cy.visit("http://localhost:2368/ghost/");
-      login.login()
+     
+      login.go()
       let index=getRandomInt(0,membersDatos.length)
       member.navigateToNewMember()
       member.setMemberName(membersDatos[index]["name"])

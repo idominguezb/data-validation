@@ -1,5 +1,5 @@
-import {Login} from "../../../pages/login";
-import {Member} from "../../../pages/member";
+import Login from "../../../page-objects/login";
+import {Member} from "../../../page-objects/member";
 
 const login= new Login()
 const member=new Member()
@@ -12,7 +12,7 @@ describe("crear miembro nota con caracteres especial", function () {
  
     it("Members", function () {
       cy.visit("http://localhost:2368/ghost/");
-      login.login()
+      login.go()
       console.log(membersDatos)
       let index=getRandomInt(0,membersDatos.length)
       member.navigateToNewMember()

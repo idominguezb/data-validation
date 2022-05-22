@@ -1,5 +1,5 @@
-import {Login} from "../../../pages/login";
-import {Member} from "../../../pages/member";
+import Login from "../../../page-objects/login";
+import {Member} from "../../../page-objects/member";
 
 const {faker}= require('@faker-js/faker');
 const login= new Login()
@@ -8,10 +8,7 @@ describe("crear miembro email extenso", function () {
 
  
     it("Members", function () {
-      cy.visit("http://localhost:2368/ghost/");
-      
-      cy.viewport(1920,1080)  
-      login.login()
+      login.go()
       member.navigateToNewMember()
       member.setMemberName(faker.name.findName())
       member.setEmailMember(faker.random.alpha(150)+"@"+"email.com")

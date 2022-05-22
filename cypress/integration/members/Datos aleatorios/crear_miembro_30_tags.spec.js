@@ -1,5 +1,5 @@
-import {Login} from "../../../pages/login";
-import {Member} from "../../../pages/member";
+import Login from "../../../page-objects/login";
+import {Member} from "../../../page-objects/member";
 
 const {faker}= require('@faker-js/faker');
 const login= new Login()
@@ -8,12 +8,10 @@ describe("crear miembro con 30 tags", function () {
 
  
     it("Members", function () {
-      cy.visit("http://localhost:2368/ghost/");
-      
-      cy.viewport(1920,1080)  
-      login.login()
+    login.go()
       member.navigateToNewMember()
-      member.setMemberName(faker.name.findName())
+      let name=faker.name.findName()
+      member.setMemberName(name)
       member.setEmailMember(faker.internet.email())
       member.setDescription(faker.lorem.lines(2))
       for(let i=0;i<29;i++){
@@ -23,7 +21,7 @@ describe("crear miembro con 30 tags", function () {
       cy.wait(1000)
       member.saveMember()
       cy.wait(2000)
-      member.checkMemberName()
+      member.checkMemberName(name)
         
     });
   });
