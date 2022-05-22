@@ -21,7 +21,16 @@ export class Page{
             "/html[1]/body[1]/div[2]/div[1]/main[1]/div[1]/section[1]/div[1]/div[1]/article[1]/div[1]/div[1]"
           ).type(desc)
       }
-
+      schedule(date=""){
+        cy.xpath("/html/body/div[2]/div/main/div/section/header/section/div[2]/div[1]/span").click()
+        cy.xpath("/html/body/div[1]/div/div/section/div/div[2]/div[1]").click()
+        if(date===""){
+          cy.xpath("/html/body/div[1]/div/footer/button[2]/span").click()
+        }else{
+          cy.xpath("/html/body/div[1]/div/div/section/div/div[2]/div[2]/div[2]/div[1]/div/div[1]/div/input").type(date)
+          cy.xpath("/html/body/div[1]/div/footer/button[2]/span").click()
+        }
+      }
       createTag(label){
         this.openSettings()
         cy.wait(1000)
@@ -56,6 +65,16 @@ export class Page{
           cy.xpath("/html/body/div[1]/div/footer/button[2]/span").click()
       }
 
+      checkRetryMessage(){
+        cy.xpath(
+          "/html/body/div[1]/div/footer/button[2]"
+        )
+          .invoke("text")
+          .then((text) => expect(text.includes("Retry")).equal(true));
+      }
+      checkErrorMessage(){
+        cy.xpath("/html/body/div[1]/div/div/section/div/div[2]/div[2]/div[3]").should("be.visible")
+      }
 
       checkTitle(title){
         cy.visit("http://localhost:2368/ghost/#/pages");
@@ -66,6 +85,12 @@ export class Page{
         cy.wait(1000)
           cy.xpath("/html/body/div[2]/div/main/section/section/ol/li[2]/a[1]/h3") .invoke("text")
           .then((text) => expect(text.includes(title)).equal(true));
+      }
+      checkUrl(url){
+        cy.xpath("/html/body/div[2]/div/main/div/div/div/div/div[2]/form/div[1]/p").invoke("text").then((text) => {
+
+           expect(text).not.equal(url)
+        });
       }
       checkPage(title){
         this.openSettings()
