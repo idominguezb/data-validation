@@ -14,19 +14,14 @@ describe("crear miembro nombre con caracteres especial", function () {
      login.go()
       console.log(membersDatos)
       let index=getRandomInt(0,membersDatos.length)
-      let index2=getRandomInt(0,membersDatos.length)
+    
       member.navigateToNewMember()
       member.setMemberName(membersDatos[index]["name"])
       member.setEmailMember(membersDatos[index]["email"])
-      member.setDescription(membersDatos[index]["description"])
+      member.createLabel(membersDatos[index]["caracteres"])
       cy.wait(1000)
       member.saveMember()
-      cy.wait(2000)
-      member.navigateToNewMember()
-      member.setMemberName(membersDatos[index]["name"])
-      member.setEmailMember(membersDatos[index2]["email"])
-      member.setDescription(membersDatos[index2]["description"])
-      member.saveMember()
+      cy.wait(3000)
       member.checkMemberName(membersDatos[index]["name"])
      
         

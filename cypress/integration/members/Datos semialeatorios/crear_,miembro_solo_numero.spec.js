@@ -19,7 +19,7 @@ describe("crear miembro solo con numberss", function () {
       member.setDescription(membersDatos[index]["numbers"])
       cy.wait(1000)
       member.saveMember()
-      cy.wait(2000)
+      cy.wait(3000)
       member.checkMemberName(membersDatos[index]["numbers"])
         
     });

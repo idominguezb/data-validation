@@ -1,5 +1,6 @@
-import Integration from '../../../page-objects/integration';
-import Login from '../../../page-objects/login';
+import Integration from '../../page-objects/integration';
+import Login from '../../page-objects/login';
+
 
 const { faker } = require('@faker-js/faker');
 const login = new Login();

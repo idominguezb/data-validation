@@ -21,7 +21,7 @@ describe("crear miembro nota con caracteres especial", function () {
       member.setDescription(membersDatos[index]["caracteres"])
       cy.wait(1000)
       member.saveMember()
-      cy.wait(2000)
+      cy.wait(3000)
       member.checkMemberName(membersDatos[index]["name"])
         
     });

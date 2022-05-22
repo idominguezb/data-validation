@@ -20,7 +20,7 @@ describe("crear miembro con 30 tags", function () {
       }
       cy.wait(1000)
       member.saveMember()
-      cy.wait(2000)
+      cy.wait(3000)
       member.checkMemberName(name)
         
     });
