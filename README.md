@@ -9,7 +9,7 @@
 ### Para la distribucion de estrategias:
 - Se implementaron 42 casos con la estrategia de datos aleatorios
 - Se implementaron 38 casos con la estrategia de datos a priori
-- Se implementaron 37 casos con la estrategia de datos semialeatorios
+- Se implementaron 40 casos con la estrategia de datos semialeatorios
 
 # Estrategia
 ## Datos aleatorios

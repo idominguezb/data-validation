@@ -18,7 +18,7 @@ describe("crear miembro nombre extenso", function () {
       member.setDescription(faker.lorem.lines(2))
       cy.wait(1000)
       member.saveMember()
-      cy.wait(2000)
+      cy.wait(3000)
       member.checktitleWidth()
    
         

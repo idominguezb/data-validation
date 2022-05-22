@@ -4,6 +4,7 @@
         "username": "prueba@example.com",
         "password": "prueba@example.com123456789"
     },
+    "videoCompression": false,
     "viewportWidth": 1920,
     "viewportHeight": 1080
 }

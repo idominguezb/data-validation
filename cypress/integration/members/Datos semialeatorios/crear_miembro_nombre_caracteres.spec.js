@@ -21,7 +21,7 @@ describe("crear miembro nombre con caracteres especial", function () {
       member.setDescription(membersDatos[index]["description"])
       cy.wait(1000)
       member.saveMember()
-      cy.wait(2000)
+      cy.wait(3000)
       member.checkMemberName(membersDatos[index]["caracteres"])
         
     });

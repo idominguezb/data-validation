@@ -3,7 +3,7 @@ import {Member} from "../../../page-objects/member";
 
 const login= new Login()
 const member=new Member()
-describe("crear miembro nombre con caracteres especial", function () {
+describe("crear miembro nombre con mimso nombre", function () {
     let membersDatos=new Array;
 
     before(  function(){ 
@@ -28,6 +28,7 @@ describe("crear miembro nombre con caracteres especial", function () {
       member.setDescription(membersDatos[index2]["description"])
       cy.wait(1000)
       member.saveMember()
+      cy.wait(2000)
       member.checkMemberName(membersDatos[index]["name"])
         
     });
