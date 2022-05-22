@@ -1,0 +1,7 @@
+{
+    "env": {
+        "url": "http://localhost:2368",
+        "username": "prueba@example.com",
+        "pasword": "prueba@example.com123456789"
+    }
+}
