@@ -1,16 +1,16 @@
 
 # Distribucion
-Se realizaron pruebas a la siguientes funcionalidades:
+### Se realizaron pruebas a la siguientes funcionalidades:
 - Crear integraciones
 - Crear miembro
 - Crear pagina
 - Crear post
 - Crear tag
-Para la distribucion de estrategias:
+### Para la distribucion de estrategias:
 - Se implementaron 42 casos con la estrategia de datos aleatorios
 - Se implementaron 38 casos con la estrategia de datos a priori
 - Se implementaron 37 casos con la estrategia de datos semialeatorios
--
+
 # Estrategia
 ## Datos aleatorios
 Para la generacion de datos aleatorios se utilizo la libreria faker en cada escenario
