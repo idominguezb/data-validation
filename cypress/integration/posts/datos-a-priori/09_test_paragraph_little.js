@@ -76,7 +76,7 @@ function scenario_title_paragraph_little(directory) {
 
     post(directory)
 
-    writerPost(directory, data[1].title != null ? data[1].title : '', null);
+    writerPost(directory, data[1].title != null ? data[1].title : ' ', data[1].paragraph != null ? data[1].paragraph : ' ');
 
     let elementMenu = cy.xpath(
         '/html[1]/body[1]/div[2]/div[1]/main[1]/div[1]/section[1]/header[1]/section[1]/div[2]/div[1]/span[1]'

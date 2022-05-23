@@ -116,7 +116,8 @@ function scenario_title(directory, postDatos) {
     elementBackPost.click({force: true});
 
     cy.wait(2000);
-    cy.screenshot(directory + '/step9')
+    cy.xpath("//button[@class='gh-btn gh-btn-red']").click({force: true});
+    cy.wait(2000);
 
     let elementList = cy.xpath(
         '/html[1]/body[1]/div[2]/div[1]/main[1]/section[1]/div[1]/header[1]/section[1]/div[1]/div[1]/div[1]/span[1]'

@@ -115,21 +115,10 @@ function scenario_title(directory) {
     elementBackPost.click({force: true});
 
     cy.wait(2000);
-    cy.screenshot(directory + '/step9')
 
-    let elementList = cy.xpath(
-        '/html[1]/body[1]/div[2]/div[1]/main[1]/section[1]/div[1]/header[1]/section[1]/div[1]/div[1]/div[1]/span[1]'
-    );
-    elementList.click({force: true});
+    cy.xpath("//button[@class='gh-btn gh-btn-red']").click({force: true});
 
     cy.wait(2000);
-    cy.screenshot(directory + '/step10')
-
-    let elementPublish = cy.xpath('/html[1]/body[1]/div[1]/div[1]/ul[1]/li[3]');
-    elementPublish.click({force: true});
-
-    cy.wait(2000);
-    cy.screenshot(directory + '/step11')
 
     exit();
 }

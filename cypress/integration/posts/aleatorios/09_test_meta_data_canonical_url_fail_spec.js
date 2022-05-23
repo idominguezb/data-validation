@@ -88,7 +88,7 @@ function scenario_title(directory) {
     );
     elementMenu.click({force: true});
 
-    cy.wait(2000);
+    cy.wait(1000);
     cy.screenshot(directory + '/step6')
 
     let elementButtonPublish = cy.xpath(
@@ -96,7 +96,7 @@ function scenario_title(directory) {
     );
     elementButtonPublish.click({force: true});
 
-    cy.wait(2000);
+    cy.wait(1000);
     cy.screenshot(directory + '/step7')
 
     let elementButtonConfirm = cy.xpath(
@@ -104,30 +104,19 @@ function scenario_title(directory) {
     );
     elementButtonConfirm.click({force: true});
 
-    cy.wait(2000);
-    cy.screenshot(directory + '/step8')
+    cy.wait(1000);
 
     let elementBackPost = cy.xpath(
         '/html[1]/body[1]/div[2]/div[1]/main[1]/div[1]/section[1]/header[1]/div[1]/div[1]/a[1]/span[1]'
     );
     elementBackPost.click({force: true});
 
-    cy.wait(2000);
-    cy.screenshot(directory + '/step9')
+    cy.wait(1000);
 
-    let elementList = cy.xpath(
-        '/html[1]/body[1]/div[2]/div[1]/main[1]/section[1]/div[1]/header[1]/section[1]/div[1]/div[1]/div[1]/span[1]'
-    );
-    elementList.click({force: true});
 
-    cy.wait(2000);
-    cy.screenshot(directory + '/step10')
+    cy.xpath("//button[@class='gh-btn gh-btn-red']").click({force: true});
 
-    let elementPublish = cy.xpath('/html[1]/body[1]/div[1]/div[1]/ul[1]/li[3]');
-    elementPublish.click({force: true});
-
-    cy.wait(2000);
-    cy.screenshot(directory + '/step11')
+    cy.wait(1000);
 
     exit();
 }

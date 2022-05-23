@@ -84,7 +84,7 @@ function scenario_title(directory, postDatos) {
     menu.click({force: true});
 
     let inputUrl = cy.xpath('/html[1]/body[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/form[1]/div[1]/div[1]/input[1]');
-    inputUrl.type(postDatos[getRandomInt(0, postDatos.length)].url, {force: true})
+    inputUrl.type(postDatos[getRandomInt(1, postDatos.length)].url != null ? postDatos[getRandomInt(1, postDatos.length)].url : ' ', {force: true})
 
     let elementMenu = cy.xpath(
         '/html[1]/body[1]/div[2]/div[1]/main[1]/div[1]/section[1]/header[1]/section[1]/div[2]/div[1]/span[1]'

@@ -78,29 +78,9 @@ function scenario_title_large(directory) {
 
     writerPost(directory, data[4].paragraph != null ? data[4].paragraph : ' ', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ');
 
-    let elementMenu = cy.xpath(
-        '/html[1]/body[1]/div[2]/div[1]/main[1]/div[1]/section[1]/header[1]/section[1]/div[2]/div[1]/span[1]'
-    );
-    elementMenu.click({force: true});
-
     cy.wait(2000);
-    cy.screenshot(directory + '/step6')
 
-    let elementButtonPublish = cy.xpath(
-        '/html[1]/body[1]/div[1]/div[1]/footer[1]/button[2]/span[1]'
-    );
-    elementButtonPublish.click({force: true});
-
-    cy.wait(2000);
-    cy.screenshot(directory + '/step7')
-
-    let elementButtonConfirm = cy.xpath(
-        "//button[@class='gh-btn gh-btn-black gh-btn-icon ember-view']"
-    );
-    elementButtonConfirm.click({force: true});
-
-    cy.wait(2000);
-    cy.screenshot(directory + '/step8')
+    writerPost(directory, ' ', ' ');
 
     let elementBackPost = cy.xpath(
         '/html[1]/body[1]/div[2]/div[1]/main[1]/div[1]/section[1]/header[1]/div[1]/div[1]/a[1]/span[1]'
@@ -108,21 +88,10 @@ function scenario_title_large(directory) {
     elementBackPost.click({force: true});
 
     cy.wait(2000);
-    cy.screenshot(directory + '/step9')
 
-    let elementList = cy.xpath(
-        '/html[1]/body[1]/div[2]/div[1]/main[1]/section[1]/div[1]/header[1]/section[1]/div[1]/div[1]/div[1]/span[1]'
-    );
-    elementList.click({force: true});
+    cy.xpath("//button[@class='gh-btn gh-btn-red']").click({force: true});
 
     cy.wait(2000);
-    cy.screenshot(directory + '/step10')
-
-    let elementPublish = cy.xpath('/html[1]/body[1]/div[1]/div[1]/ul[1]/li[3]');
-    elementPublish.click({force: true});
-
-    cy.wait(2000);
-    cy.screenshot(directory + '/step11')
 
     exit();
 }
