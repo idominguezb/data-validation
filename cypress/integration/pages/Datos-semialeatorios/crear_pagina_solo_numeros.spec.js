@@ -4,12 +4,12 @@ import {Page} from "../../../page-objects/page";
 
 const login= new Login()
 const page=new Page()
-describe("create_member", function () {
+describe("crear pagina con solo numeros", function () {
   let  pageDatos=[]
   before(function(){
       cy.request("https://api.mockaroo.com/api/c98be0f0?count=1000&key=a8a44f40").then((response)=>pageDatos=response.body)
   })
-    it("Members", function () {
+    it("Crear pagina con solo numeros", function () {
  
       login.go()
       cy.wait(2000)

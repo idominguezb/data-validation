@@ -34,6 +34,12 @@ export class Page{
           cy.xpath("/html/body/div[1]/div/footer/button[2]/span").click()
         }
       }
+      createExcerpt(label){
+        this.openSettings()
+        cy.wait(1000)
+        cy.xpath("/html/body/div[2]/div/main/div/div/div/div/div[2]/form/div[5]/textarea").type(label)
+      
+      }
       createTag(label){
         this.openSettings()
         cy.wait(1000)

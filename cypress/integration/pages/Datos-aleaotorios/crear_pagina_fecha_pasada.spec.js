@@ -8,7 +8,7 @@ const login= new Login()
 const page=new Page()
 describe("Programar pagina con fecha pasada", function () {
   
-    it("Members", function () {
+    it("Programar pagina con fecha pasada", function () {
     login.go()
     cy.wait(2000)
      page.navigateToNewPage()

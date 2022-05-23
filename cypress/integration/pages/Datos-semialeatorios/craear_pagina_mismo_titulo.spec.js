@@ -9,7 +9,7 @@ describe("Crear pagina con mimso titulo", function () {
     before(function(){
         cy.request("https://api.mockaroo.com/api/c98be0f0?count=1000&key=a8a44f40").then((response)=>pageDatos=response.body)
     })
-    it("Members", function () {
+    it("Crear paginas y verificar que se crearon con el mimso titulo", function () {
      login.go()
      cy.wait(2000)
       let index=getRandomInt(0,pageDatos.length)

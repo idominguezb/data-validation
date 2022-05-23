@@ -6,7 +6,7 @@ const login= new Login()
 const page=new Page()
 describe("Crear pagina con titulo largo", function () {
   
-    it("Members", function () {
+    it("Crear pagina y verificar el width de la lista de paginas", function () {
     
       login.go()
       cy.wait(2000)

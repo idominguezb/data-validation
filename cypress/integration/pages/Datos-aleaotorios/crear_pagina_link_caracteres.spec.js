@@ -6,9 +6,9 @@ import {Page} from "../../../page-objects/page";
 const {faker}= require('@faker-js/faker');
 const login= new Login()
 const page=new Page()
-describe("Crear pagina con titulo largo", function () {
+describe("Crear pagina con link que contiene caracteres no alfanumericos", function () {
   
-    it("Members", function () {
+    it("Crear pagian y verificar que no tiene caracteres alfanumericos el link", function () {
       login.go()
       cy.wait(2000)
      page.navigateToNewPage()

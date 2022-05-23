@@ -5,7 +5,7 @@ const membersDatos=require("./datos/datos_members.json")
 const login= new Login()
 const member=new Member()
 describe("crear_miembro_nombre_vacio", function () {
-    it("Members", function () {
+    it("crear_miembro_nombre_vacio", function () {
       login.go()
       let index=getRandomInt(0,membersDatos.length)
       member.navigateToNewMember()

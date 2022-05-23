@@ -5,7 +5,7 @@ const membersDatos=require("./datos/datos_members.json")
 const login= new Login()
 const member=new Member()
 describe("crear miembro sin nota", function () {
-    it("Members", function () {
+    it("crear miembro sin nota", function () {
  
       login.go()
       let index=getRandomInt(0,membersDatos.length)
@@ -15,7 +15,7 @@ describe("crear miembro sin nota", function () {
 
       cy.wait(1000)
       member.saveMember()
-      cy.wait(2000)
+      cy.wait(3000)
       member.checkMemberName(membersDatos[index]["name"])
     });
   });

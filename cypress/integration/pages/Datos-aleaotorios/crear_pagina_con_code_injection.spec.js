@@ -6,7 +6,7 @@ const login= new Login()
 const page=new Page()
 describe("Crear pagina con code injection", function () {
   
-    it("Members", function () {
+    it("Crear una pagina con code injection", function () {
    login.go()
    cy.wait(2000)
      page.navigateToNewPage()

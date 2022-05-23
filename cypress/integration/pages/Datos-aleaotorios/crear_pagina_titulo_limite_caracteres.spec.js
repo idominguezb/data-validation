@@ -6,7 +6,7 @@ const login= new Login()
 const page=new Page()
 describe("Crear pagina con titulo 256 caracteres", function () {
   
-    it("Members", function () {
+    it("Crear pagina y verificar que sale el mensaje de error", function () {
     
       login.go()
       cy.wait(2000)

@@ -5,7 +5,7 @@ const pageDatos=require("./datos/page_datos.json")
 const login= new Login()
 const page=new Page()
 describe("crear pagina sin descripcion", function () {
-    it("Members", function () {
+    it("Crear pagina sin descripcion", function () {
       login.go()
       cy.wait(2000)
       let index=getRandomInt(0,pageDatos.length)

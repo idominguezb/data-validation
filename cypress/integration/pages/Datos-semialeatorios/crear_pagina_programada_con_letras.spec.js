@@ -3,12 +3,12 @@ import {Page} from "../../../page-objects/page";
 
 const login= new Login()
 const page=new Page()
-describe("Crear pagina programada con letras", function () {
+describe("Crear pagina programada y escribir letras en el campo de fecha", function () {
     let  pageDatos=[]
     before(function(){
         cy.request("https://api.mockaroo.com/api/c98be0f0?count=1000&key=a8a44f40").then((response)=>pageDatos=response.body)
     })
-    it("Members", function () {
+    it("Crear pagina programada y ver que aparece el mensaje de error", function () {
      login.go()
      cy.wait(2000)
       let index=getRandomInt(0,pageDatos.length)

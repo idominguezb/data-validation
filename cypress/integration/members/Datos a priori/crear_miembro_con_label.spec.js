@@ -5,7 +5,7 @@ const membersDatos=require("./datos/datos_members.json")
 const login= new Login()
 const member=new Member()
 describe("crear miembro con label", function () {
-    it("Members", function () {
+    it("crear miembro con label", function () {
      
       login.go()
       let index=getRandomInt(0,membersDatos.length)
