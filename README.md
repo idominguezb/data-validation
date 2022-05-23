@@ -31,5 +31,4 @@ Las pruebas son ejecutadas en cypress, y en la version 4.47 de ghost en el puert
   * Ejecutar Solo Tags `cypress run --spec cypress/integration/tags/*/**.js`
   * Ejecutar solo Pages `cypress run --spec cypress/integration/pages/*/**.js`
   * Ejecutar solo Posts `cypress run --spec cypress/integration/posts/*/**.js`
-  * Ejecutar todos `cypress run` *Al ejecutar este comando probablemente ocurrira un error ya que intenta correr los archivos readme* (Se recomienda la ejecucion individual debido a que al ejecutar todos toma mas tiempo) 
-
+  
