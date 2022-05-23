@@ -12,7 +12,7 @@
 - Se implementaron 40 casos con la estrategia de datos semialeatorios
 
 # Estrategia
-Con la generacion de datos se buscaron probar escenarios positivos como crear integracion, crear miembro, crear pagina, crear post o crear tag, mientras que en los negativos se crearon pruebas que buscaban errores como por ejemplo cadenas que sobrepasen el limite de un input o omitir un input que es requerido para ver como responde la aplacacion, finalmente para los escenarios mix de positivo y negativo fueron escanarios que miraban lo que sucedia con la interfaz grafica cuando se escribian largas cadena
+Con la generacion de datos se buscaron probar escenarios positivos como crear integracion, crear miembro, crear pagina, crear post o crear tag, mientras que en los negativos se crearon pruebas que buscaban errores como por ejemplo cadenas que sobrepasen el limite de un input o omitir un input que es requerido para ver como responde la aplacacion, finalmente para los escenarios mix de positivo y negativo fueron escenarios que miraban lo que sucedia con la interfaz grafica cuando se escribian largas cadena
 ## Datos aleatorios
 Para la generacion de datos aleatorios se utilizo la libreria faker en cada escenario. La mayoria de escenarios que fueron creados se basaban principalmente en probar la longitud y el limite de caracteres de ciertos inputs debido a que faker facilita la creacion de string con n caracteres.
 
