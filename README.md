@@ -22,7 +22,7 @@ Para la generación pseudo aleatoria de datos, se utilizó el generador de datos
 ### Datos a priori 
 Para la generacion de datos a priori, se utilizo el generador de datos Mockaroo con ciertos valores, luego se descargo un archivo json que contenia los datos que se generaron para que se puedan usar en los escenarios. 
 # Ejecucion
-Las pruebas son ejecutadas en cypress, y en la version 4.47 de ghost en el puerto 2368, como usuario predeterminado se usa un usuario con email: prueba@example.com y password:prueba@example.com123456789, sin embargo estas credenciales pueden cambiar en el archivo cypress.json los campos de username y password.
+Las pruebas son ejecutadas en cypress, y en la version 4.47 de ghost en el puerto 2368, como usuario predeterminado se usa un usuario con email: prueba@example.com y password:prueba@example.com123456789.
 ## cypress
 1. Ejecute el comando `npm install` en la raiz del repositorio
 2. Para ejecutar las pruebas:
